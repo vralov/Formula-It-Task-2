@@ -47,7 +47,7 @@ class PaperBook(Book):
 class AudioBook(Book):
     def __init__(self, name: str, author: str, duration: float):
         super().__init__(name, author)
-        self.duration = duration # Используем сеттер для установки значения
+        self.duration = duration  # Используем сеттер для установки значения
 
     @property
     def duration(self):
