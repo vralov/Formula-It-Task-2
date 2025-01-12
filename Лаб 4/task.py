@@ -1,3 +1,6 @@
+from math import pi
+
+
 class GeometricShape:
     """
     Базовый класс для геометрических фигур.
@@ -6,7 +9,6 @@ class GeometricShape:
     def __init__(self, name: str):
         """
         Конструктор базового класса.
-
         Args:
             name: Название геометрической фигуры.
         """
@@ -30,6 +32,12 @@ class GeometricShape:
         """
         raise NotImplementedError("Метод area должен быть реализован в подклассах.")
 
+    def describe(self) -> str:
+        """
+        Общий метод для описания фигуры.
+        """
+        return f"Это геометрическая фигура с именем: {self._name}."
+
 
 class Circle(GeometricShape):
     """
@@ -39,7 +47,6 @@ class Circle(GeometricShape):
     def __init__(self, name: str, radius: float):
         """
         Конструктор класса Circle.
-
         Args:
             name: Название круга.
             radius: Радиус круга.
@@ -49,13 +56,13 @@ class Circle(GeometricShape):
 
     def __str__(self) -> str:
         """
-        Перегруженный метод __str__ для вывода информации о круге.
+        Перегруженный метод str для вывода информации о круге.
         """
         return f"Круг '{self._name}' с радиусом {self._radius}"
 
     def __repr__(self) -> str:
         """
-        Перегруженный метод __repr__ для вывода информации о круге для разработчиков.
+        Перегруженный метод repr для вывода информации о круге для разработчиков.
         """
         return f"{self.__class__.__name__}(name='{self._name}', radius={self._radius})"
 
@@ -63,25 +70,34 @@ class Circle(GeometricShape):
         """
         Вычисляет площадь круга. Перегруженный метод area из базового класса.
         """
-        return 3.14159 * self._radius ** 2
+        return pi * self._radius ** 2
 
     def perimeter(self) -> float:
         """
         Вычисляет периметр (длину окружности) круга.
-        Унаследованный метод - в базовом классе нет такого метода.
         """
-        return 2 * 3.14159 * self._radius
+        return 2 * pi * self._radius
+
+    def describe(self) -> str:
+        """
+        Переопределенный метод describe для круга.
+        """
+        return f"Это круг '{self._name}' с радиусом {self._radius}."
 
 
 # Пример использования
 circle1 = Circle("Круг1", 5)
-print(circle1)  # Круг 'Круг1' с радиусом 5
-print(repr(circle1))  # Circle(name='Круг1', radius=5)
-print(f"Площадь: {circle1.area()}")  # Площадь: 78.53975
-print(f"Периметр: {circle1.perimeter()}")  # Периметр: 31.4159
+print(circle1)
+print(repr(circle1))
+print(f"Площадь: {circle1.area()}")
+print(f"Периметр: {circle1.perimeter()}")
+print(circle1.describe())
 
 try:
     shape = GeometricShape("Фигура")
     shape.area()  # Вызовет NotImplementedError
 except NotImplementedError as e:
     print(e)
+
+shape = GeometricShape("Фигура")
+print(shape.describe())
