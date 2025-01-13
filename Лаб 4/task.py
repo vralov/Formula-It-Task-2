@@ -56,19 +56,19 @@ class Circle(GeometricShape):
 
     def __str__(self) -> str:
         """
-        Перегруженный метод str для вывода информации о круге.
+        Переопределенный метод str для вывода информации о круге.
         """
         return f"Круг '{self._name}' с радиусом {self._radius}"
 
     def __repr__(self) -> str:
         """
-        Перегруженный метод repr для вывода информации о круге для разработчиков.
+        Переопределенный метод repr для вывода информации о круге для разработчиков.
         """
         return f"{self.__class__.__name__}(name='{self._name}', radius={self._radius})"
 
     def area(self) -> float:
         """
-        Вычисляет площадь круга. Перегруженный метод area из базового класса.
+        Вычисляет площадь круга. Переопределенный метод area из базового класса.
         """
         return pi * self._radius ** 2
 
@@ -78,12 +78,6 @@ class Circle(GeometricShape):
         """
         return 2 * pi * self._radius
 
-    def describe(self) -> str:
-        """
-        Переопределенный метод describe для круга.
-        """
-        return f"Это круг '{self._name}' с радиусом {self._radius}."
-
 
 # Пример использования
 circle1 = Circle("Круг1", 5)
@@ -91,7 +85,7 @@ print(circle1)
 print(repr(circle1))
 print(f"Площадь: {circle1.area()}")
 print(f"Периметр: {circle1.perimeter()}")
-print(circle1.describe())
+print(circle1.describe())  # Теперь используется метод describe родителя!
 
 try:
     shape = GeometricShape("Фигура")
