@@ -85,7 +85,7 @@ print(circle1)
 print(repr(circle1))
 print(f"Площадь: {circle1.area()}")
 print(f"Периметр: {circle1.perimeter()}")
-print(circle1.describe())  # Теперь используется метод describe родителя!
+print(circle1.describe())
 
 try:
     shape = GeometricShape("Фигура")
